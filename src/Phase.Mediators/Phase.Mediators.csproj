@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F0296323-2775-4158-8752-52DB53D45089}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Phase.Mediators</RootNamespace>
+    <AssemblyName>Phase.Mediators</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommandCancelledException.cs" />
+    <Compile Include="Factories.cs" />
+    <Compile Include="IMediator.cs" />
+    <Compile Include="Invokers\CommandInvoker.cs" />
+    <Compile Include="Invokers\QueryInvoker.cs" />
+    <Compile Include="LockingMediator.cs" />
+    <Compile Include="Mediator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransactionalMediator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Phase.Commands\Phase.Commands.csproj">
+      <Project>{8b759021-5923-47f1-b8e4-d62724bfeaba}</Project>
+      <Name>Phase.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phase.Domains\Phase.Domains.csproj">
+      <Project>{e27f02fe-6781-44c9-b835-f6a20251f7c8}</Project>
+      <Name>Phase.Domains</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phase.Providers\Phase.Providers.csproj">
+      <Project>{d8fad6e5-44b5-46ff-943e-a320c865591c}</Project>
+      <Name>Phase.Providers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
