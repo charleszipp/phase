@@ -1,2 +1,2 @@
 # phase-dotnet
-CQRS + Event Sourcing library with pluggable provider model
+CQRS + Event Sourcing library for stateful services
