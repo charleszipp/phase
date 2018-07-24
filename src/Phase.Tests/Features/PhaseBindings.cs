@@ -2,10 +2,6 @@
 using Phase.Builders;
 using Phase.Ninject;
 using Phase.Providers.Memory;
-using Phase.Tests.Commands;
-using Phase.Tests.Events;
-using Phase.Tests.Models;
-using Phase.Tests.Queries;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -14,6 +10,11 @@ using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Bindings;
 using TechTalk.SpecFlow.Assist;
+using Phase.Samples.Domains.Budgets;
+using Phase.Samples.Domains.Budgets.Interfaces.Commands;
+using Phase.Samples.Domains.Budgets.Interfaces.Queries;
+using Phase.Samples.Domains.Budgets.Interfaces.Models;
+using System.Linq;
 
 namespace Phase.Tests.Features
 {
@@ -27,17 +28,8 @@ namespace Phase.Tests.Features
         {
             var dependencyResolver = new NinjectDependencyResolver();
             var eventsProvider = new InMemoryEventsProvider(new InMemoryEventCollection(), TenantKeyFactory);
-
             _phase = new PhaseBuilder(dependencyResolver, eventsProvider, TenantKeyFactory)
-                .WithCommandHandler<CreateMockHandler, CreateMock>()
-                .WithCommandHandler<LinkAccountHandler, LinkAccount>()
-                .WithQueryHandler<GetMockHandler, GetMock, GetMockResult>()
-                .WithAggregateRoot<MockAggregate>()
-                .WithReadModel<MockReadModel>()
-                .WithAggregateRoot<BudgetAggregate>()
-                .WithReadModel<BudgetLedger>()
-                .WithStatefulEventSubscriber<MockCreated, MockReadModel>()
-                .WithStatefulEventSubscriber<AccountLinked, BudgetLedger>()
+                .WithBudgets()
                 .Build();
             _cancellation = new CancellationTokenSource();
         }
@@ -90,28 +82,29 @@ namespace Phase.Tests.Features
 
         [When(@"executing a command without result")]
         public Task WhenExecutingACommandWithoutResult() =>
-            _phase.ExecuteAsync(new CreateMock("Mock 1"), _cancellation.Token);
+            _phase.ExecuteAsync(new LinkAccount(Guid.NewGuid(), "111", "Checking"), _cancellation.Token);
 
         [When(@"executing a query")]
         public Task WhenExecutingAQuery() =>
-            _phase.QueryAsync(new GetMock(), _cancellation.Token);
+            _phase.QueryAsync(new GetAccounts(), _cancellation.Token);
 
-        [When(@"phase executes create mock command")]
+        [When(@"phase executes link account command")]
         public Task WhenPhaseExecutesCreateMockCommand(Table table) => 
-            _phase.ExecuteAsync(table.CreateImmutableInstance<CreateMock>(), _cancellation.Token);
+            _phase.ExecuteAsync(table.CreateImmutableInstance<LinkAccount>(), _cancellation.Token);
 
-        [When(@"phase executes get mock query")]
+        [When(@"phase executes get accounts query")]
         public async Task WhenPhaseExecutesGetMockQuery()
         {
-            var result = await _phase.QueryAsync(new GetMock(), _cancellation.Token);
-            ScenarioContext.Current["GetMockResult"] = result;
+            var result = await _phase.QueryAsync(new GetAccounts(), _cancellation.Token);
+            ScenarioContext.Current["GetAccountsResult"] = result;
         }
 
-        [Then(@"the query should return mock name ""(.*)""")]
-        public void ThenTheQueryShouldReturnMockName(string expectedMockName)
+        [Then(@"the query should return the following accounts")]
+        public void ThenTheQueryShouldReturnMockName(Table table)
         {
-            GetMockResult result = (GetMockResult)ScenarioContext.Current["GetMockResult"];
-            Assert.AreEqual(expectedMockName, result.MockName);
+            GetAccountsResult result = (GetAccountsResult)ScenarioContext.Current["GetAccountsResult"];
+            var expectedAccounts = table.CreateSet<Account>();
+            Assert.IsTrue(expectedAccounts.SequenceEqual(result.Accounts));
         }
 
 

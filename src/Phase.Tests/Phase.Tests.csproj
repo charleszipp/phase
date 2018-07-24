@@ -79,12 +79,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CreateMock.cs" />
-    <Compile Include="Commands\CreateMockHandler.cs" />
-    <Compile Include="Commands\LinkAccount.cs" />
-    <Compile Include="Commands\LinkAccountHandler.cs" />
-    <Compile Include="Events\AccountLinked.cs" />
-    <Compile Include="Events\MockCreated.cs" />
     <Compile Include="Features\CommandsAndQueries.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -97,15 +91,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StateTransitions.feature</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountEntity.cs" />
-    <Compile Include="Models\BudgetAggregate.cs" />
-    <Compile Include="Models\BudgetLedger.cs" />
-    <Compile Include="Models\MockAggregate.cs" />
-    <Compile Include="Models\MockReadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\GetMock.cs" />
-    <Compile Include="Queries\GetMockHandler.cs" />
-    <Compile Include="Queries\GetMockResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -129,8 +115,16 @@
       <Name>Phase.Ninject</Name>
     </ProjectReference>
     <ProjectReference Include="..\Phase\Phase.csproj">
-      <Project>{232C5FE9-37B3-45F0-9881-5C1540B02889}</Project>
+      <Project>{232c5fe9-37b3-45f0-9881-5c1540b02889}</Project>
       <Name>Phase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samples\Phase.Samples.Domains.Budgets.Interfaces\Phase.Samples.Domains.Budgets.Interfaces.csproj">
+      <Project>{A6E34CCA-0DBD-4EDF-BEE9-813AD3B16877}</Project>
+      <Name>Phase.Samples.Domains.Budgets.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samples\Phase.Samples.Domains.Budgets\Phase.Samples.Domains.Budgets.csproj">
+      <Project>{97d78b67-b138-40ad-8e32-cddbc31624de}</Project>
+      <Name>Phase.Samples.Domains.Budgets</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

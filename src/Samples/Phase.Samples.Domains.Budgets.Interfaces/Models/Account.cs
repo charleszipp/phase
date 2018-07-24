@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Phase.Tests.Models
+namespace Phase.Samples.Domains.Budgets.Interfaces.Models
 {
-    public class AccountEntity
+    public class Account
     {
-        public AccountEntity(Guid id, string number, string name)
+        public Account(Guid id, string number, string name)
         {
             Id = id;
             Number = number;

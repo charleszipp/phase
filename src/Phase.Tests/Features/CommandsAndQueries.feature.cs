@@ -97,17 +97,29 @@ this.ScenarioSetup(scenarioInfo);
                         "Field",
                         "Value"});
             table1.AddRow(new string[] {
-                        "MockId",
+                        "AccountId",
                         "63921ebb-b2b4-44fd-b441-17e730556ac8"});
             table1.AddRow(new string[] {
-                        "MockName",
-                        "Mock 1"});
+                        "AccountNumber",
+                        "1111"});
+            table1.AddRow(new string[] {
+                        "AccountName",
+                        "BofA Checking"});
 #line 5
- testRunner.When("phase executes create mock command", ((string)(null)), table1, "When ");
-#line 9
- testRunner.And("phase executes get mock query", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("phase executes link account command", ((string)(null)), table1, "When ");
 #line 10
- testRunner.Then("the query should return mock name \"Mock 1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("phase executes get accounts query", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "AccountId",
+                        "AccountNumber",
+                        "AccountName"});
+            table2.AddRow(new string[] {
+                        "63921ebb-b2b4-44fd-b441-17e730556ac8",
+                        "1111",
+                        "BofA Checking"});
+#line 11
+ testRunner.Then("the query should return the following accounts", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

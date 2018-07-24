@@ -1,16 +1,17 @@
 ﻿using Phase.Domains;
-using Phase.Tests.Events;
-using Phase.Tests.Models;
+using Phase.Samples.Domains.Budgets.Events;
+using Phase.Samples.Domains.Budgets.Interfaces;
+using Phase.Samples.Domains.Budgets.Interfaces.Commands;
+using Phase.Samples.Domains.Budgets.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Phase.Tests.Commands
+namespace Phase.Samples.Domains.Budgets.Commands
 {
-    public class LinkAccountHandler : CommandHandler<LinkAccount>
+    internal class LinkAccountHandler : CommandHandler<LinkAccount>
     {
         public override async Task Execute(LinkAccount command, CancellationToken cancellationToken)
         {

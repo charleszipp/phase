@@ -2,9 +2,12 @@
 	
 Scenario: execute command that succesfully applies to aggregate and subscribers
 	Given phase is occupied with tenant id "63921ebb-b2b4-44fd-b441-17e730556ac8"
-	When phase executes create mock command
-	| Field    | Value                                |
-	| MockId   | 63921ebb-b2b4-44fd-b441-17e730556ac8 |
-	| MockName | Mock 1                               |
-	And phase executes get mock query
-	Then the query should return mock name "Mock 1"
+	When phase executes link account command
+	| Field         | Value                                |
+	| AccountId     | 63921ebb-b2b4-44fd-b441-17e730556ac8 |
+	| AccountNumber | 1111                                 |
+	| AccountName   | BofA Checking                        |
+	And phase executes get accounts query
+	Then the query should return the following accounts
+	| AccountId                            | AccountNumber | AccountName   |
+	| 63921ebb-b2b4-44fd-b441-17e730556ac8 | 1111          | BofA Checking |

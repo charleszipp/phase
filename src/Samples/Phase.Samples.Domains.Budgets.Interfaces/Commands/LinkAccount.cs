@@ -1,14 +1,14 @@
 ﻿using Phase.Interfaces;
 using System;
 
-namespace Phase.Tests.Commands
+namespace Phase.Samples.Domains.Budgets.Interfaces.Commands
 {
     public class LinkAccount : ICommand
     {
-        public LinkAccount(Guid accountId, string accountNumer, string accountName)
+        public LinkAccount(Guid accountId, string accountNumber, string accountName)
         {
             AccountId = accountId;
-            AccountNumber = accountNumer;
+            AccountNumber = accountNumber;
             AccountName = accountName;
         }
 

@@ -215,33 +215,48 @@ this.ScenarioSetup(scenarioInfo);
                         "Field",
                         "Value"});
             table1.AddRow(new string[] {
-                        "MockId",
-                        "63921ebb-b2b4-44fd-b441-17e730556ac8"});
+                        "AccountId",
+                        "cda49d33-00f6-45f8-99e7-bfc30f08e4a08"});
             table1.AddRow(new string[] {
-                        "MockName",
-                        "Mock 1"});
+                        "AccountNumber",
+                        "1111"});
+            table1.AddRow(new string[] {
+                        "AccountName",
+                        "Checking"});
 #line 39
- testRunner.When("phase executes create mock command", ((string)(null)), table1, "When ");
-#line 43
- testRunner.And("vacate phase", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("phase executes link account command", ((string)(null)), table1, "When ");
 #line 44
+ testRunner.And("vacate phase", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 45
  testRunner.And("occupy phase with tenant id \"0e0c4165-b386-45dc-a278-12bfe46f5921\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
             table2.AddRow(new string[] {
-                        "MockId",
-                        "0e0c4165-b386-45dc-a278-12bfe46f5921"});
+                        "AccountId",
+                        "505ed83d-56cf-471b-bc3f-5d862e622628"});
             table2.AddRow(new string[] {
-                        "MockName",
-                        "Mock 2"});
-#line 45
- testRunner.And("phase executes create mock command", ((string)(null)), table2, "And ");
-#line 49
- testRunner.And("phase executes get mock query", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 50
- testRunner.Then("the query should return mock name \"Mock 2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                        "AccountNumber",
+                        "2222"});
+            table2.AddRow(new string[] {
+                        "AccountName",
+                        "Savings"});
+#line 46
+ testRunner.When("phase executes link account command", ((string)(null)), table2, "When ");
+#line 51
+ testRunner.And("phase executes get accounts query", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "AccountId",
+                        "AccountNumber",
+                        "AccountName"});
+            table3.AddRow(new string[] {
+                        "505ed83d-56cf-471b-bc3f-5d862e622628",
+                        "2222",
+                        "Savings"});
+#line 52
+ testRunner.Then("the query should return the following accounts", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -252,46 +267,61 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ReusePhaseInstanceForDifferentTenantThenOccupyForFirstTenant()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("reuse phase instance for different tenant then occupy for first tenant", ((string[])(null)));
-#line 52
+#line 56
 this.ScenarioSetup(scenarioInfo);
-#line 53
+#line 57
  testRunner.Given("phase is occupied with tenant id \"63921ebb-b2b4-44fd-b441-17e730556ac8\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Value"});
-            table3.AddRow(new string[] {
-                        "MockId",
-                        "63921ebb-b2b4-44fd-b441-17e730556ac8"});
-            table3.AddRow(new string[] {
-                        "MockName",
-                        "Mock 1"});
-#line 54
- testRunner.When("phase executes create mock command", ((string)(null)), table3, "When ");
-#line 58
- testRunner.And("vacate phase", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 59
- testRunner.And("occupy phase with tenant id \"0e0c4165-b386-45dc-a278-12bfe46f5921\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Field",
                         "Value"});
             table4.AddRow(new string[] {
-                        "MockId",
-                        "0e0c4165-b386-45dc-a278-12bfe46f5921"});
+                        "AccountId",
+                        "cda49d33-00f6-45f8-99e7-bfc30f08e4a08"});
             table4.AddRow(new string[] {
-                        "MockName",
-                        "Mock 2"});
-#line 60
- testRunner.And("phase executes create mock command", ((string)(null)), table4, "And ");
-#line 64
+                        "AccountNumber",
+                        "1111"});
+            table4.AddRow(new string[] {
+                        "AccountName",
+                        "Checking"});
+#line 58
+ testRunner.When("phase executes link account command", ((string)(null)), table4, "When ");
+#line 63
  testRunner.And("vacate phase", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 64
+ testRunner.And("occupy phase with tenant id \"0e0c4165-b386-45dc-a278-12bfe46f5921\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Field",
+                        "Value"});
+            table5.AddRow(new string[] {
+                        "AccountId",
+                        "505ed83d-56cf-471b-bc3f-5d862e622628"});
+            table5.AddRow(new string[] {
+                        "AccountNumber",
+                        "2222"});
+            table5.AddRow(new string[] {
+                        "AccountName",
+                        "Savings"});
 #line 65
+ testRunner.When("phase executes link account command", ((string)(null)), table5, "When ");
+#line 70
+ testRunner.And("vacate phase", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 71
  testRunner.And("occupy phase with tenant id \"63921ebb-b2b4-44fd-b441-17e730556ac8\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 66
- testRunner.And("phase executes get mock query", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 67
- testRunner.Then("the query should return mock name \"Mock 1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 72
+ testRunner.And("phase executes get accounts query", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "AccountId",
+                        "AccountNumber",
+                        "AccountName"});
+            table6.AddRow(new string[] {
+                        "cda49d33-00f6-45f8-99e7-bfc30f08e4a08",
+                        "1111",
+                        "Checking"});
+#line 73
+ testRunner.Then("the query should return the following accounts", ((string)(null)), table6, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
