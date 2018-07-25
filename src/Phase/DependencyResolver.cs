@@ -28,6 +28,8 @@ namespace Phase
 
         protected abstract bool IsRegistered<TInterface>();
 
+        public abstract object Get(Type type);
+
         internal TAggregate GetAggregateRoot<TAggregate>() where TAggregate : AggregateRoot => 
             AggregateProxy<TAggregate>.Create(Single<TAggregate>());
 

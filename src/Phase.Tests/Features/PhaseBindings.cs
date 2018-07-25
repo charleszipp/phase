@@ -24,13 +24,9 @@ namespace Phase.Tests.Features
         private readonly CancellationTokenSource _cancellation;
         private readonly Phase _phase;
 
-        public PhaseBindings()
+        public PhaseBindings(Phase phase)
         {
-            var dependencyResolver = new NinjectDependencyResolver();
-            var eventsProvider = new InMemoryEventsProvider(new InMemoryEventCollection(), TenantKeyFactory);
-            _phase = new PhaseBuilder(dependencyResolver, eventsProvider, TenantKeyFactory)
-                .WithBudgets()
-                .Build();
+            _phase = phase;
             _cancellation = new CancellationTokenSource();
         }
 
@@ -106,9 +102,5 @@ namespace Phase.Tests.Features
             var expectedAccounts = table.CreateImmutableSet<Account>();
             Assert.IsTrue(expectedAccounts.ToProjection(table).SequenceEqual(result.Accounts.ToProjection()));
         }
-
-
-        private IDictionary<string, string> TenantKeyFactory(string tenantInstanceName) =>
-            new Dictionary<string, string> { { "boardid", tenantInstanceName } };
     }
 }

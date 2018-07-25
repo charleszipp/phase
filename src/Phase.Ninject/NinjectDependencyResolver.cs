@@ -13,6 +13,9 @@ namespace Phase.Ninject
 
         public NinjectDependencyResolver(IKernel kernel) => _kernel = kernel;
 
+        public override object Get(Type type) => 
+            _kernel.Get(type);
+
         protected override void CopySingleton<TOriginal, TDestination>() => 
             _kernel.Bind<TDestination>().ToMethod(ctx => ctx.Kernel.Get<TOriginal>()).InSingletonScope();
 
