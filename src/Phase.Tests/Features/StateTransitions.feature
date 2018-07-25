@@ -50,8 +50,8 @@ Scenario: resuse phase instance for different tenant
 	| AccountName   | Savings                              |
 	And phase executes get accounts query
 	Then the query should return the following accounts
-	| AccountId                            | AccountNumber | AccountName |
-	| 505ed83d-56cf-471b-bc3f-5d862e622628 | 2222          | Savings     |
+	| Id                                   | Number | Name    |
+	| 505ed83d-56cf-471b-bc3f-5d862e622628 | 2222   | Savings |
 
 Scenario: reuse phase instance for different tenant then occupy for first tenant
 	Given phase is occupied with tenant id "63921ebb-b2b4-44fd-b441-17e730556ac8"
@@ -71,5 +71,5 @@ Scenario: reuse phase instance for different tenant then occupy for first tenant
 	And occupy phase with tenant id "63921ebb-b2b4-44fd-b441-17e730556ac8"
 	And phase executes get accounts query
 	Then the query should return the following accounts
-	| AccountId                             | AccountNumber | AccountName |
-	| cda49d33-00f6-45f8-99e7-bfc30f08e4a08 | 1111          | Checking    |
+	| Id                                    | Number | Name     |
+	| cda49d33-00f6-45f8-99e7-bfc30f08e4a08 | 1111   | Checking |

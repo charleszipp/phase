@@ -103,8 +103,8 @@ namespace Phase.Tests.Features
         public void ThenTheQueryShouldReturnMockName(Table table)
         {
             GetAccountsResult result = (GetAccountsResult)ScenarioContext.Current["GetAccountsResult"];
-            var expectedAccounts = table.CreateSet<Account>();
-            Assert.IsTrue(expectedAccounts.SequenceEqual(result.Accounts));
+            var expectedAccounts = table.CreateImmutableSet<Account>();
+            Assert.IsTrue(expectedAccounts.ToProjection(table).SequenceEqual(result.Accounts.ToProjection()));
         }
 
 

@@ -248,9 +248,9 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.And("phase executes get accounts query", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "AccountId",
-                        "AccountNumber",
-                        "AccountName"});
+                        "Id",
+                        "Number",
+                        "Name"});
             table3.AddRow(new string[] {
                         "505ed83d-56cf-471b-bc3f-5d862e622628",
                         "2222",
@@ -313,9 +313,9 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.And("phase executes get accounts query", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                        "AccountId",
-                        "AccountNumber",
-                        "AccountName"});
+                        "Id",
+                        "Number",
+                        "Name"});
             table6.AddRow(new string[] {
                         "cda49d33-00f6-45f8-99e7-bfc30f08e4a08",
                         "1111",

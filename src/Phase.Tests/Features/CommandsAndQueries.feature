@@ -9,5 +9,5 @@ Scenario: execute command that succesfully applies to aggregate and subscribers
 	| AccountName   | BofA Checking                        |
 	And phase executes get accounts query
 	Then the query should return the following accounts
-	| AccountId                            | AccountNumber | AccountName   |
-	| 63921ebb-b2b4-44fd-b441-17e730556ac8 | 1111          | BofA Checking |
+	| Id                                   | Number | Name          |
+	| 63921ebb-b2b4-44fd-b441-17e730556ac8 | 1111   | BofA Checking |
