@@ -13,7 +13,6 @@ namespace Phase.SpecFlowPlugin
             {
                 if (!args.ObjectContainer.IsRegistered<IPhaseFinder>())
                 {
-                    args.ObjectContainer.RegisterTypeAs<PhaseTestObjectResolver, ITestObjectResolver>();
                     args.ObjectContainer.RegisterTypeAs<PhaseFinder, IPhaseFinder>();
 
                     // workaround for parallel execution issue - this should be rather a feature in BoDi?
