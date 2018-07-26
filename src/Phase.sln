@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phase.Samples.Domains.Budge
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phase.Samples.Domains.Budgets.Interfaces", "Samples\Phase.Samples.Domains.Budgets.Interfaces\Phase.Samples.Domains.Budgets.Interfaces.csproj", "{A6E34CCA-0DBD-4EDF-BEE9-813AD3B16877}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phase.SpecFlowPlugin", "Phase.Specflow\Phase.SpecFlowPlugin.csproj", "{8399C792-D490-4EA4-805B-72DEFE15E73B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phase.SpecFlowPlugin", "Phase.SpecFlowPlugin\Phase.SpecFlowPlugin.csproj", "{8399C792-D490-4EA4-805B-72DEFE15E73B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phase.Ninject.SpecFlowPlugin", "Phase.Ninject.SpecFlowPlugin\Phase.Ninject.SpecFlowPlugin.csproj", "{183F4DBD-4450-4021-831B-FF45903F340D}"
 EndProject

@@ -120,8 +120,8 @@
       <Project>{1D89D566-C3FA-4A49-9BE7-DF42561E20F5}</Project>
       <Name>Phase.Ninject</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phase.Specflow\Phase.SpecFlowPlugin.csproj">
-      <Project>{8399C792-D490-4EA4-805B-72DEFE15E73B}</Project>
+    <ProjectReference Include="..\Phase.SpecFlowPlugin\Phase.SpecFlowPlugin.csproj">
+      <Project>{8399c792-d490-4ea4-805b-72defe15e73b}</Project>
       <Name>Phase.SpecFlowPlugin</Name>
     </ProjectReference>
     <ProjectReference Include="..\Phase\Phase.csproj">

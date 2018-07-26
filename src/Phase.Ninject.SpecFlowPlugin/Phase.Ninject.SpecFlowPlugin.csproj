@@ -62,7 +62,7 @@
     <Compile Include="ScenarioKernelFactoryAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phase.Specflow\Phase.SpecFlowPlugin.csproj">
+    <ProjectReference Include="..\Phase.SpecFlowPlugin\Phase.SpecFlowPlugin.csproj">
       <Project>{8399c792-d490-4ea4-805b-72defe15e73b}</Project>
       <Name>Phase.SpecFlowPlugin</Name>
     </ProjectReference>
