@@ -84,8 +84,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CommandsAndQueries.feature</DependentUpon>
     </Compile>
+    <Compile Include="ExceptionBindings.cs" />
     <Compile Include="Features\PhaseBindings.cs" />
-    <Compile Include="Features\SpecflowTableExtensions.cs" />
+    <Compile Include="SpecflowTableExtensions.cs" />
     <Compile Include="Features\StateTransitions.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -110,6 +111,10 @@
     <ProjectReference Include="..\Phase.Interfaces\Phase.Interfaces.csproj">
       <Project>{5790EB33-1DBF-4DAA-A287-EB0BF20E5C8D}</Project>
       <Name>Phase.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phase.Ninject.SpecFlowPlugin\Phase.Ninject.SpecFlowPlugin.csproj">
+      <Project>{183f4dbd-4450-4021-831b-ff45903f340d}</Project>
+      <Name>Phase.Ninject.SpecFlowPlugin</Name>
     </ProjectReference>
     <ProjectReference Include="..\Phase.Ninject\Phase.Ninject.csproj">
       <Project>{1D89D566-C3FA-4A49-9BE7-DF42561E20F5}</Project>

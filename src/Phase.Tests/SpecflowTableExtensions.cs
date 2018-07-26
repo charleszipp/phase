@@ -8,7 +8,7 @@ using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using TechTalk.SpecFlow.Assist.Attributes;
 
-namespace Phase.Tests.Features
+namespace Phase.Tests
 {
     public static class TableExtensions
     {

@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phase.Samples.Domains.Budge
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phase.SpecFlowPlugin", "Phase.Specflow\Phase.SpecFlowPlugin.csproj", "{8399C792-D490-4EA4-805B-72DEFE15E73B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phase.Ninject.SpecFlowPlugin", "Phase.Ninject.SpecFlowPlugin\Phase.Ninject.SpecFlowPlugin.csproj", "{183F4DBD-4450-4021-831B-FF45903F340D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,14 @@ Global
 		{8399C792-D490-4EA4-805B-72DEFE15E73B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8399C792-D490-4EA4-805B-72DEFE15E73B}.Release|x64.ActiveCfg = Release|Any CPU
 		{8399C792-D490-4EA4-805B-72DEFE15E73B}.Release|x64.Build.0 = Release|Any CPU
+		{183F4DBD-4450-4021-831B-FF45903F340D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{183F4DBD-4450-4021-831B-FF45903F340D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{183F4DBD-4450-4021-831B-FF45903F340D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{183F4DBD-4450-4021-831B-FF45903F340D}.Debug|x64.Build.0 = Debug|Any CPU
+		{183F4DBD-4450-4021-831B-FF45903F340D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{183F4DBD-4450-4021-831B-FF45903F340D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{183F4DBD-4450-4021-831B-FF45903F340D}.Release|x64.ActiveCfg = Release|Any CPU
+		{183F4DBD-4450-4021-831B-FF45903F340D}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
