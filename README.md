@@ -124,3 +124,5 @@ internal class LinkAccountHandler : CommandHandler<LinkAccount>
     }
 }
 ```
+
+# More docs coming soon...
