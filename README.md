@@ -99,6 +99,65 @@ The following will illustrate how the different constructs within phase can be i
 - Aggregate Root (aka Write Model)
 - Read Model
 
+## Aggregate Roots
+The aggregate root represents a typical aggregate as defined in the Domain Driven Design concepts. It represents the domain's model and boundary. Its the only object in the domain model that the commands can/should reference directly. The data within aggegates are considered to be immediately consistent. This makes it safe for commands to use for validation and making decisions.
+
+Aggregates should inherit from the AggregateRoot base class. They should also require the `PhaseAggegate` attribute. This attribute defines a segment that will be used in URI's generated for all events raised against the aggregate.
+
+Aggregates are stateful objects. They should define a data model for the data they maintain. The model should be tailored for command validation efficiency.
+
+Aggregates handle raised events. To handle an event a method should be defined with the following signature. The runtime will execute this method immediately when an event is raised against the aggregate. This enables the command to immediately read the results of the event it raised. 
+
+```csharp
+[PhaseAggregate("budgets")]
+internal class BudgetAggregate : AggregateRoot
+{
+    // define the state this aggregate uses
+    internal IDictionary<Guid, AccountEntity> Accounts { get; } = new Dictionary<Guid, AccountEntity>();
+
+    // define events that it handles
+    public void Apply(AccountLinked e)
+    {
+        Accounts[e.AccountId] = new AccountEntity(e.AccountId, e.AccountNumber, e.AccountName);
+    }
+}
+```
+
+> **Important!**
+> Events should be the only source of data used to populate an Aggregate's data model. When the Aggregate is rehydrated in a subsequent request, these events will be replayed to rebuild the data model.
+
+## Read Models
+The read model is typically an alternate representation of the domain model structured for read efficiency. For example, if the application typically serves aggregated/summarized data disproportionately more often than it takes input from users then it can be beneficial to create a denormalized model tailored for aggregation/summarization. An example of such a model would be one that follows the traditional star or snowflake schema.
+
+Read models are stateful objects. Their source of data should also be the events. Read models can subscribe to events by implementing the `IHandleEvent<TEvent>` interface. Then registered via the builder extension `WithStatefulEventSubscriber<TEvent, TEventHandler>()`
+
+Read models are hydrated during `OccupyAsync`. The event stream is replayed on the read model to bring it back to the last known state of the system.
+
+```csharp
+internal class BudgetLedger : IHandleEvent<AccountLinked>, IVolatileState
+{
+    internal IDictionary<Guid, AccountEntity> Accounts = new Dictionary<Guid, AccountEntity>();
+
+    public void Handle(AccountLinked @event)
+    {
+        Accounts[@event.AccountId] = new AccountEntity(@event.AccountId, @event.AccountNumber, @event.AccountName);
+    }
+}
+```
+### Important Assumptions
+When building the read model, these 3 assumptions should be kept in mind.
+
+#### Eventual Consistency
+The state is eventually consistent with respect to the Aggregate Root. Therefore, these are not safe to use within commands.
+
+#### Guaranteed Order
+Events will always be played in the order they were raised. Therefore, the event handlers can make assumptions about the order in which they are expected to be executed.
+
+#### At Least Once Delivery
+Events are guaranteed to be delivered at least once. This implies that a single event may be delivered multiple times. This may occur in the event of a transient failure. Therefore, the `Handle` methods of the read model should be idempotent. 
+
+> Coming Soon: Builder extension to configure phase to publish all events twice. This would be used from within only the unit tests to ensure handlers are kept idempotent.
+
 ## Commands
 Commands should execute an operation whose intent is to potentially modify state. Commands should use an Aggregate Root to perform validation and raise events.
 
@@ -125,4 +184,35 @@ internal class LinkAccountHandler : CommandHandler<LinkAccount>
 }
 ```
 
-# More docs coming soon...
+## Queries
+Queries should execute and operation whose intent is to only return data. Queries should not modify state. Queries should use a Read Model to materialize the data being requested.
+
+Queries are implemented by defining a new class that implements IHandleQuery<TQuery, TResult>. TQuery represents the DTO that contains the arguments needed to fulfil the query. TResult is the DTO that represents the result of the query. The execute method should encapsulate the steps needed to fulfil the query
+
+> Note
+> The read model can be injected via constructor injection. The `WithReadModel` builder extension will register the instance with the provided dependency resolver making it possible to inject. This is true for any of the object registered with the builder extensions!
+
+```csharp
+internal class GetAccountsHandler : IHandleQuery<GetAccounts, GetAccountsResult>
+{
+    // read model
+    private readonly BudgetLedger _ledger;
+
+    // inject the read model
+    public GetAccountsHandler(BudgetLedger ledger)
+    {
+        _ledger = ledger;
+    }
+
+    public Task<GetAccountsResult> Execute(GetAccounts query, CancellationToken cancellationToken)
+    {
+        // execute a linq to objects query against the read model to materialize and return the result
+        return Task.FromResult(new GetAccountsResult(
+            _ledger.Accounts.Select(a => new Account(a.Key, a.Value.Number, a.Value.Name)).ToList() // be sure to enumerate!
+            ));
+    }
+}
+```
+
+> **Important!**
+> Always enumerate lists that are returned from a query handler. Never return an enumerable that holds a reference back to the read model. Executing `ToList` or `ToArray` should do the trick in most cases. Deep copy can also be used if necessary.
