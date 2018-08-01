@@ -98,12 +98,6 @@
     <Compile Include="States\VacantState.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phase.Interfaces\Phase.Interfaces.csproj">
-      <Project>{5790EB33-1DBF-4DAA-A287-EB0BF20E5C8D}</Project>
-      <Name>Phase.Interfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
     <None Include="Phase.nuspec" />
   </ItemGroup>

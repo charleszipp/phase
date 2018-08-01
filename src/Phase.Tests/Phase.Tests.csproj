@@ -108,10 +108,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phase.Interfaces\Phase.Interfaces.csproj">
-      <Project>{5790EB33-1DBF-4DAA-A287-EB0BF20E5C8D}</Project>
-      <Name>Phase.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Phase.Ninject.SpecFlowPlugin\Phase.Ninject.SpecFlowPlugin.csproj">
       <Project>{183f4dbd-4450-4021-831b-ff45903f340d}</Project>
       <Name>Phase.Ninject.SpecFlowPlugin</Name>
