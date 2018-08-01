@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Phase.Ninject")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Phase dependency resolver implementation for ninject")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Charles Zipp")]
 [assembly: AssemblyProduct("Phase.Ninject")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
