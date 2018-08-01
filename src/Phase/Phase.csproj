@@ -1,105 +1,34 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{232C5FE9-37B3-45F0-9881-5C1540B02889}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Phase</RootNamespace>
-    <AssemblyName>Phase</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFrameworks>net46;netstandard2.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Charles Zipp</Authors>
+    <Company />
+    <Description>Phase is an in-process, platform agnostic, tenant isolating, CQRS and Event Sourcing for stateful services. Phase operates against in-memomry state as its primary source of data for both writes and reads. It then provides an abstraction for persisting the events to a durable store. This allows the entire framework to be executed end-to-end, in-proc from any platform. It also allows it to serve both commands and queries in sub-millisecond times</Description>
+    <Copyright>2018</Copyright>
+    <PackageLicenseUrl>https://github.com/charleszipp/phase/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/charleszipp/phase</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/charleszipp/phase.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>cqrs; event; sourcing; actor;</PackageTags>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="DeepCopy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DeepCopy.1.0.3\lib\netstandard2.0\DeepCopy.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Bson, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MongoDB.Bson.2.7.0\lib\net45\MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+    <PackageReference Include="MongoDB.Bson" Version="2.7.0" />
+    <PackageReference Include="System.Reflection.DispatchProxy" Version="4.5.1" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Builders\IPhaseBuilder.cs" />
-    <Compile Include="Builders\PhaseQueryDecorator.cs" />
-    <Compile Include="Builders\PhaseCommandDecorator.cs" />
-    <Compile Include="Builders\PhaseDecorator.cs" />
-    <Compile Include="Builders\PhaseStatefulEventSubscriberDecorator.cs" />
-    <Compile Include="Builders\PhaseStatelessEventSubscriberDecorator.cs" />
-    <Compile Include="Builders\PhaseVolatileStateDecorator.cs" />
-    <Compile Include="DependencyResolver.cs" />
-    <Compile Include="Domains\AggregateDescriptor.cs" />
-    <Compile Include="Domains\AggregateProxy.cs" />
-    <Compile Include="Domains\AggregateRoot.cs" />
-    <Compile Include="Domains\CommandHandler.cs" />
-    <Compile Include="Domains\IVolatileState.cs" />
-    <Compile Include="Domains\PhaseAggregateAttribute.cs" />
-    <Compile Include="Domains\Session.cs" />
-    <Compile Include="Builders\PhaseBuilder.cs" />
-    <Compile Include="States\OccupiedState.cs" />
-    <Compile Include="Phase.cs" />
-    <Compile Include="States\PhaseState.cs" />
-    <Compile Include="Publishers\EventPublisher.cs" />
-    <Compile Include="Mediators\CommandInvoker.cs" />
-    <Compile Include="Mediators\Mediator.cs" />
-    <Compile Include="Mediators\QueryInvoker.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\IEventsProvider.cs" />
-    <Compile Include="Providers\Memory\InMemoryEventCollection.cs" />
-    <Compile Include="Providers\Memory\InMemoryEventDocument.cs" />
-    <Compile Include="Providers\Memory\InMemoryEventsProvider.cs" />
-    <Compile Include="Publishers\EventSubscriber.cs" />
-    <Compile Include="Publishers\IdemptotentTestingEventPublisher.cs" />
-    <Compile Include="States\PhaseStates.cs" />
-    <Compile Include="States\VacantState.cs" />
+    <ProjectReference Include="..\Phase.Interfaces\Phase.Interfaces.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Phase.nuspec" />
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="DeepCopy">
+      <Version>1.0.3</Version>
+    </PackageReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

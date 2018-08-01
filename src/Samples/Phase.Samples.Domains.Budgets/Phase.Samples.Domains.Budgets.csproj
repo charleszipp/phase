@@ -51,10 +51,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Phase\Phase.csproj">
-      <Project>{232C5FE9-37B3-45F0-9881-5C1540B02889}</Project>
-      <Name>Phase</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Phase.Samples.Domains.Budgets.Interfaces\Phase.Samples.Domains.Budgets.Interfaces.csproj">
       <Project>{a6e34cca-0dbd-4edf-bee9-813ad3b16877}</Project>
       <Name>Phase.Samples.Domains.Budgets.Interfaces</Name>
