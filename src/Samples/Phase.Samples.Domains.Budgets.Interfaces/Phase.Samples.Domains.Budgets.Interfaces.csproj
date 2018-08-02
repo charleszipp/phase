@@ -46,6 +46,11 @@
     <Compile Include="Queries\GetAccounts.cs" />
     <Compile Include="Queries\GetAccountsResult.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Phase.Interfaces\Phase.Interfaces.csproj">
+      <Project>{61917437-0165-4a2a-896b-fb6a55a6113a}</Project>
+      <Name>Phase.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

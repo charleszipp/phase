@@ -66,6 +66,10 @@
       <Project>{8399c792-d490-4ea4-805b-72defe15e73b}</Project>
       <Name>Phase.SpecFlowPlugin</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Phase\Phase.csproj">
+      <Project>{b2368f12-f7d5-497f-97db-4c042a3e3dde}</Project>
+      <Name>Phase</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

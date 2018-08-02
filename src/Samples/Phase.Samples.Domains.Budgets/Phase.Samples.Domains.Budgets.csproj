@@ -51,6 +51,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Phase.Interfaces\Phase.Interfaces.csproj">
+      <Project>{61917437-0165-4a2a-896b-fb6a55a6113a}</Project>
+      <Name>Phase.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Phase.Ninject\Phase.Ninject.csproj">
+      <Project>{9029a111-fcdc-4947-8215-0e69af566455}</Project>
+      <Name>Phase.Ninject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Phase\Phase.csproj">
+      <Project>{b2368f12-f7d5-497f-97db-4c042a3e3dde}</Project>
+      <Name>Phase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Phase.Samples.Domains.Budgets.Interfaces\Phase.Samples.Domains.Budgets.Interfaces.csproj">
       <Project>{a6e34cca-0dbd-4edf-bee9-813ad3b16877}</Project>
       <Name>Phase.Samples.Domains.Budgets.Interfaces</Name>
