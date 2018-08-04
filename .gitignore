@@ -287,6 +287,3 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
-
-# Keep deploy assemblies and executables
-!build/**
