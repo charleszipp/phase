@@ -31,7 +31,7 @@ namespace Phase
         public abstract object Get(Type type);
 
         internal TAggregate GetAggregateRoot<TAggregate>() where TAggregate : AggregateRoot => 
-            AggregateProxy<TAggregate>.Create(Single<TAggregate>());
+            Single<TAggregate>();
 
         internal IHandleCommand<TCommand> GetCommandHandler<TCommand>(ITenantContext tenant) where TCommand : ICommand
         {

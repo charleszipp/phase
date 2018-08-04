@@ -1,0 +1,5 @@
+branches:
+  (pull|pull\-requests|pr)[/-]:
+    tag: beta
+ignore:
+  sha: []
