@@ -109,7 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Phase.Interfaces\Phase.Interfaces.csproj">
-      <Project>{5790EB33-1DBF-4DAA-A287-EB0BF20E5C8D}</Project>
+      <Project>{61917437-0165-4a2a-896b-fb6a55a6113a}</Project>
       <Name>Phase.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Phase.Ninject.SpecFlowPlugin\Phase.Ninject.SpecFlowPlugin.csproj">
@@ -117,7 +117,7 @@
       <Name>Phase.Ninject.SpecFlowPlugin</Name>
     </ProjectReference>
     <ProjectReference Include="..\Phase.Ninject\Phase.Ninject.csproj">
-      <Project>{1D89D566-C3FA-4A49-9BE7-DF42561E20F5}</Project>
+      <Project>{9029a111-fcdc-4947-8215-0e69af566455}</Project>
       <Name>Phase.Ninject</Name>
     </ProjectReference>
     <ProjectReference Include="..\Phase.SpecFlowPlugin\Phase.SpecFlowPlugin.csproj">
@@ -125,7 +125,7 @@
       <Name>Phase.SpecFlowPlugin</Name>
     </ProjectReference>
     <ProjectReference Include="..\Phase\Phase.csproj">
-      <Project>{232c5fe9-37b3-45f0-9881-5c1540b02889}</Project>
+      <Project>{b2368f12-f7d5-497f-97db-4c042a3e3dde}</Project>
       <Name>Phase</Name>
     </ProjectReference>
     <ProjectReference Include="..\Samples\Phase.Samples.Domains.Budgets.Interfaces\Phase.Samples.Domains.Budgets.Interfaces.csproj">
