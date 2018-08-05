@@ -1,5 +1,5 @@
 # Phase
-Phase is an in-process, platform agnostic, tenant isolating, CQRS & Event Sourcing for stateful services. Phase operates against in-memomry state as its primary source of data for both writes and reads. It then provides an abstraction for persisting the events to a durable store. This allows the entire framework to be executed end-to-end, in-proc from any platform. It also allows it to serve both commands and queries in sub-millisecond times
+Phase is an in-process, platform agnostic, tenant isolating, CQRS & Event Sourcing for stateful services. Phase operates against in-memomry state as its primary source of data for both writes and reads. It then provides an abstraction for persisting the events to a durable store. This allows the entire framework to be executed end-to-end, in-proc from any platform. 
 
 # Bootstrapping
 Phase must be constructed of 3 dependent objects.
@@ -75,10 +75,6 @@ await phase.VacateAsync(cancellation.Token);
 
 # Defining the Constructs
 The following will illustrate how the different constructs within phase can be implemented. There are 4 major constructs
-- Commands
-- Queries
-- Aggregate Root (aka Write Model)
-- Read Model
 
 ## Aggregate Roots
 The aggregate root represents a typical aggregate as defined in the Domain Driven Design concepts. It represents the domain's model and boundary. Its the only object in the domain model that the commands can/should reference directly. The data within aggegates are considered to be immediately consistent. This makes it safe for commands to use for validation and making decisions.
@@ -100,11 +96,6 @@ internal class BudgetAggregate : AggregateRoot
 
 ## Read Models
 The read model is typically an alternate representation of the domain model structured for read efficiency. For example, if the application typically serves aggregated/summarized data disproportionately more often than it takes input from users then it can be beneficial to create a denormalized model tailored for aggregation/summarization. An example of such a model would be one that follows the traditional star or snowflake schema.
-
-Read models are stateful objects. Their source of data should also be the events. Read models can subscribe to events by implementing the `IHandleEvent<TEvent>` interface. Then registered via the builder extension `WithStatefulEventSubscriber<TEvent, TEventHandler>()`
-
-Read models are hydrated during `OccupyAsync`. The event stream is replayed on the read model to bring it back to the last known state of the system.
-
 ```csharp
 internal class BudgetLedger : IHandleEvent<AccountLinked>, IVolatileState
 {
@@ -116,6 +107,7 @@ internal class BudgetLedger : IHandleEvent<AccountLinked>, IVolatileState
     }
 }
 ```
+
 ## Commands
 Commands should execute an operation whose intent is to potentially modify state. Commands should use an Aggregate Root to perform validation and raise events.
 ```csharp
