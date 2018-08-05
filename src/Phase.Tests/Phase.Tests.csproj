@@ -129,11 +129,11 @@
       <Name>Phase</Name>
     </ProjectReference>
     <ProjectReference Include="..\Samples\Phase.Samples.Domains.Budgets.Interfaces\Phase.Samples.Domains.Budgets.Interfaces.csproj">
-      <Project>{A6E34CCA-0DBD-4EDF-BEE9-813AD3B16877}</Project>
+      <Project>{b4f7d9a0-4398-4d32-bc89-8cf27782fbcf}</Project>
       <Name>Phase.Samples.Domains.Budgets.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Samples\Phase.Samples.Domains.Budgets\Phase.Samples.Domains.Budgets.csproj">
-      <Project>{97d78b67-b138-40ad-8e32-cddbc31624de}</Project>
+      <Project>{75c105f9-db74-43ff-81d4-b44214fdac48}</Project>
       <Name>Phase.Samples.Domains.Budgets</Name>
     </ProjectReference>
   </ItemGroup>
