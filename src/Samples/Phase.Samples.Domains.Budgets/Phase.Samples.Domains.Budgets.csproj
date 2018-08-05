@@ -1,69 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{97D78B67-B138-40AD-8E32-CDDBC31624DE}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Phase.Samples.Domains.Budgets</RootNamespace>
-    <AssemblyName>Phase.Samples.Domains.Budgets</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <ProjectReference Include="..\..\Phase.Interfaces\Phase.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Phase.Ninject\Phase.Ninject.csproj" />
+    <ProjectReference Include="..\..\Phase\Phase.csproj" />
+    <ProjectReference Include="..\Phase.Samples.Domains.Budgets.Interfaces\Phase.Samples.Domains.Budgets.Interfaces.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Events\AccountLinked.cs" />
-    <Compile Include="Handlers\GetAccountsHandler.cs" />
-    <Compile Include="Handlers\LinkAccountHandler.cs" />
-    <Compile Include="Models\AccountEntity.cs" />
-    <Compile Include="Models\BudgetAggregate.cs" />
-    <Compile Include="Models\BudgetLedger.cs" />
-    <Compile Include="PhaseBudgetsDecorator.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Phase.Interfaces\Phase.Interfaces.csproj">
-      <Project>{5790EB33-1DBF-4DAA-A287-EB0BF20E5C8D}</Project>
-      <Name>Phase.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Phase\Phase.csproj">
-      <Project>{232C5FE9-37B3-45F0-9881-5C1540B02889}</Project>
-      <Name>Phase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Phase.Samples.Domains.Budgets.Interfaces\Phase.Samples.Domains.Budgets.Interfaces.csproj">
-      <Project>{a6e34cca-0dbd-4edf-bee9-813ad3b16877}</Project>
-      <Name>Phase.Samples.Domains.Budgets.Interfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
