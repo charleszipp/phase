@@ -8,18 +8,15 @@ namespace Phase.Publishers
     [ExcludeFromCodeCoverage]
     internal class IdemptotentTestingEventPublisher : EventPublisher
     {
-        private readonly EventPublisher _publisher;
-
-        internal IdemptotentTestingEventPublisher(EventPublisher publisher, DependencyResolver resolver)
+        internal IdemptotentTestingEventPublisher(DependencyResolver resolver)
             :base(resolver)
         {
-            _publisher = publisher;
         }
 
         internal override void Publish(IEvent @event, CancellationToken cancellationToken)
         {
-            _publisher.Publish(@event, cancellationToken);
-            _publisher.Publish(@event, cancellationToken);
+            base.Publish(@event, cancellationToken);
+            base.Publish(@event, cancellationToken);
         }
     }
 }
