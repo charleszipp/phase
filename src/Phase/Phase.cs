@@ -16,14 +16,14 @@ namespace Phase
         private readonly SemaphoreSlim _lock = new SemaphoreSlim(1, 1);
         private PhaseState _currentState = new VacantState();
 
-        internal Phase(DependencyResolver resolver, IEventsProvider eventsProvider, Func<string, IDictionary<string, string>> tenantKeysFactory)
+        internal Phase(DependencyResolver resolver, IEventsProvider eventsProvider, Func<string, IDictionary<string, string>> tenantKeysFactory, EventPublisher publisher = null)
         {
             DependencyResolver = resolver;
             EventsProvider = eventsProvider;
             Mediator = new Mediator(resolver);
             Session = new Session(resolver, EventsProvider);
             resolver._session = Session;
-            Publisher = new EventPublisher(resolver);
+            Publisher = publisher ?? new EventPublisher(resolver);
         }
 
         public DependencyResolver DependencyResolver { get; }
