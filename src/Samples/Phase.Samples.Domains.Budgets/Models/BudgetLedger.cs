@@ -13,7 +13,7 @@ namespace Phase.Samples.Domains.Budgets.Models
 
         public void Handle(AccountLinked @event)
         {
-            //not idempotent. this will fail tests when using PhaseTestingBuilder
+            //this operation is not idempotent. this will fail tests when using PhaseTestingBuilder
             //Accounts.Add(@event.AccountId, new AccountEntity(@event.AccountId, @event.AccountNumber, @event.AccountName));
 
             //this is example of the idempotent version of the operation add. This will pass despite the event being run twice.
