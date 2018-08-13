@@ -14,7 +14,7 @@ namespace Phase.Tests
         {
             var dependencyResolver = new NinjectDependencyResolver();
             var eventsProvider = new InMemoryEventsProvider(new InMemoryEventCollection(), TenantKeyFactory);
-            return new PhaseBuilder(dependencyResolver, eventsProvider, TenantKeyFactory)
+            return new PhaseTestingBuilder(dependencyResolver, eventsProvider, TenantKeyFactory)
                 .WithBudgets()
                 .Build();
         }

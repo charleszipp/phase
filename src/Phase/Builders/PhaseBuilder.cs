@@ -1,4 +1,5 @@
 ﻿using Phase.Providers;
+using Phase.Publishers;
 using System;
 using System.Collections.Generic;
 
@@ -17,6 +18,6 @@ namespace Phase.Builders
             _tenantKeysFactory = tenantKeysFactory;
         }
 
-        public Phase Build() => new Phase(_resolver, _eventsProvider, _tenantKeysFactory);
+        public Phase Build() => new Phase(_resolver, _eventsProvider, new EventPublisher(_resolver), _tenantKeysFactory);
     }
 }
