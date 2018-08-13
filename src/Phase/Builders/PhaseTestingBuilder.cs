@@ -26,6 +26,6 @@ namespace Phase.Builders
             _publisher = new IdemptotentTestingEventPublisher(resolver);
         }
 
-        public Phase Build() => new Phase(_resolver, _eventsProvider, _tenantKeysFactory, _publisher);
+        public Phase Build() => new Phase(_resolver, _eventsProvider, _publisher, _tenantKeysFactory);
     }
 }
